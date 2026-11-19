@@ -75,7 +75,7 @@ ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt \
 
 # Install Nginx, then clean up file system
 RUN apt-get update \
-	&& apt-get install -y ca-certificates \
+	&& apt-get install -y ca-certificates make \
 	&& /tmp/install-nginx.sh \
 	&& apt-get remove -y wget gettext \
 	&& apt-get autoremove -y \
