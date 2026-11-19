@@ -64,18 +64,6 @@ run_test_a() {
 	echo -e "✅ ${GREEN}Test A passed${RESET}"
 }
 
-run_test_b() {
-	local result
-	result="$(docker compose exec -T nginx curl -s 'http://127.0.0.1:8080/lua')"
-	# check if result contains "Test page"
-	if [[ "$result" != *"Test Page"* ]]; then
-		echo -e "❌ ${RED}Test B failed${RESET}"
-		echo "Unexpected result: $result"
-		exit 1
-	fi
-	echo -e "✅ ${GREEN}Test B passed${RESET}"
-}
-
 trap 'cleanup' EXIT
 
 echo "========================="
@@ -83,5 +71,4 @@ docker compose config
 echo "========================="
 start_containers
 run_test_a
-run_test_b
 stop_containers

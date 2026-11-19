@@ -6,33 +6,18 @@ YELLOW='\E[1;33m'
 GREEN='\E[1;32m'
 RESET='\E[0m'
 
-echo -e "${BLUE}❯ ${CYAN}Building OpenResty ${YELLOW}${OPENRESTY_VERSION} with nginx_http_geoip2 module...${RESET}"
+echo -e "${BLUE}❯ ${CYAN}Building Nginx ${YELLOW}${NGINX_VERSION} with nginx_http_geoip2 module...${RESET}"
 
 cd /tmp
 
-# The official releases:
-# wget "https://openresty.org/download/openresty-${OPENRESTY_VERSION}.tar.gz" -O "openresty-${OPENRESTY_VERSION}.tar.gz"
-
 # The github tagged releases:
-wget "https://github.com/openresty/openresty/archive/refs/tags/v${OPENRESTY_VERSION}.tar.gz" -O "openresty-${OPENRESTY_VERSION}.tar.gz"
+wget "https://github.com/nginx/nginx/releases/download/release-${NGINX_VERSION}/nginx-${NGINX_VERSION}.tar.gz" -O "nginx-${NGINX_VERSION}.tar.gz"
 
-tar -xzf "openresty-${OPENRESTY_VERSION}.tar.gz"
-mv "/tmp/openresty-${OPENRESTY_VERSION}" /tmp/openresty
+tar -xzf "nginx-${NGINX_VERSION}.tar.gz"
+mv "/tmp/nginx-${NGINX_VERSION}" /tmp/nginx
 git clone 'https://github.com/leev/ngx_http_geoip2_module.git'
-mv /tmp/ngx_http_geoip2_module /tmp/openresty/ngx_http_geoip2_module
-cd /tmp/openresty
-
-make
-
-# Backport the two nginx 1.31.9 HTTP/2 security fixes to this OpenResty release.
-# The DATA-frame queue change is required by the CVE-2026-123007 fix.
-if [ "${OPENRESTY_VERSION}" = "1.31.8.1" ]; then
-	for patch in http2-data-frame-queue.patch CVE-2026-123633.patch CVE-2026-123007.patch; do
-		git -C "/tmp/openresty/openresty-${OPENRESTY_VERSION}/bundle/nginx-1.31.8" apply "/tmp/openresty-patches/$patch"
-	done
-fi
-
-cd "/tmp/openresty/openresty-${OPENRESTY_VERSION}"
+mv /tmp/ngx_http_geoip2_module /tmp/nginx/ngx_http_geoip2_module
+cd /tmp/nginx
 
 ./configure \
 	--prefix=/etc/nginx \
@@ -74,8 +59,8 @@ cd "/tmp/openresty/openresty-${OPENRESTY_VERSION}"
 	--with-stream_ssl_module \
 	--with-stream_ssl_preread_module \
 	--with-http_v3_module \
-	--add-dynamic-module=/tmp/openresty/ngx_http_geoip2_module
+	--add-dynamic-module=/tmp/nginx/ngx_http_geoip2_module
 
 make -j"$(nproc)"
 
-echo -e "${BLUE}❯ ${GREEN}OpenResty build completed${RESET}"
+echo -e "${BLUE}❯ ${GREEN}Nginx build completed${RESET}"

@@ -7,17 +7,11 @@ variable "BASE_TAG" {
 variable "TAG_PREFIX" {
 	default = ""
 }
-variable "OPENRESTY_VERSION" {
-	default = "1.31.8.1"
+variable "NGINX_VERSION" {
+	default = "1.31.9"
 }
 variable "NODE_MAJOR" {
 	default = "26"
-}
-variable "LUA_VERSION" {
-	default = "5.1.5"
-}
-variable "LUAROCKS_VERSION" {
-	default = "3.13.0"
 }
 
 group "default" {
@@ -32,9 +26,7 @@ target "base" {
 	inherits = ["common"]
 	dockerfile = "docker/Dockerfile"
 	args = {
-		OPENRESTY_VERSION = "${OPENRESTY_VERSION}"
-		LUA_VERSION = "${LUA_VERSION}"
-		LUAROCKS_VERSION = "${LUAROCKS_VERSION}"
+		NGINX_VERSION = "${NGINX_VERSION}"
 	}
 	tags = ["${DOCKER_IMAGE}:${BASE_TAG}"]
 }
