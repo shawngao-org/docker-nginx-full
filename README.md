@@ -10,6 +10,11 @@
   </a>
 </p>
 
+> This project is an unofficial fork of NginxProxyManager/docker-nginx-full, in which OpenResty has been replaced with Nginx.
+> However, it has not been thoroughly tested and is not recommended for use in a production environment.
+
+> Below is the readme file written by the original author.
+
 This is a base image for use in other images. See Dockerfile for build steps.
 
 The following images are built:
