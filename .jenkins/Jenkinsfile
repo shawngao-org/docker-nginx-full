@@ -86,13 +86,13 @@ pipeline {
 			}
 			steps {
 				script {
-					def comment = pullRequest.comment("""Docker Image for build ${BUILD_NUMBER} is available on [DockerHub](https://cloud.docker.com/repository/docker/nginxproxymanager/nginx-full) as:
+					def comment = pullRequest.comment("""Docker Image for build ${BUILD_NUMBER} is available on [DockerHub](https://cloud.docker.com/repository/docker/zetohkr/nginx-full) as:
 
-- `nginxproxymanager/nginx-full:${baseTag}`
-- `nginxproxymanager/nginx-full:${tagPrefix}certbot`
-- `nginxproxymanager/nginx-full:${tagPrefix}certbot-node`
-- `nginxproxymanager/nginx-full:${tagPrefix}acmesh`
-- `nginxproxymanager/nginx-full:${tagPrefix}acmesh-golang`
+- `zetohkr/nginx-full:${baseTag}`
+- `zetohkr/nginx-full:${tagPrefix}certbot`
+- `zetohkr/nginx-full:${tagPrefix}certbot-node`
+- `zetohkr/nginx-full:${tagPrefix}acmesh`
+- `zetohkr/nginx-full:${tagPrefix}acmesh-golang`
 """)
 				}
 			}

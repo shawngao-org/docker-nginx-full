@@ -1,7 +1,7 @@
 ---
 services:
   nginx:
-    image: "nginxproxymanager/nginx-full:$IMAGE_TAG"
+    image: "zetohkr/nginx-full:$IMAGE_TAG"
     environment:
       TZ: "Australia/Brisbane"
     volumes:

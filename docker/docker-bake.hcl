@@ -1,5 +1,5 @@
 variable "DOCKER_IMAGE" {
-	default = "nginxproxymanager/nginx-full"
+	default = "zetohkr/nginx-full"
 }
 variable "BASE_TAG" {
 	default = "latest"

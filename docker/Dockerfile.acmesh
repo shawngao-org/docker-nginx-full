@@ -25,4 +25,4 @@ COPY ./docker/files/acme.sh-wrapper /bin/acme.sh
 # Test that the wrapper script is working
 RUN /bin/acme.sh -h
 
-LABEL org.label-schema.cmd="docker run --rm -ti nginxproxymanager/nginx-full:acmesh"
+LABEL org.label-schema.cmd="docker run --rm -ti zetohkr/nginx-full:acmesh"

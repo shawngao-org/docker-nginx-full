@@ -2,11 +2,11 @@
 
 <p>
   <img src="https://img.shields.io/badge/nginx-1.31.9-green.svg?style=for-the-badge">
-  <a href="https://hub.docker.com/repository/docker/nginxproxymanager/nginx-full">
-    <img src="https://img.shields.io/docker/stars/nginxproxymanager/nginx-full.svg?style=for-the-badge">
+  <a href="https://hub.docker.com/repository/docker/zetohkr/nginx-full">
+    <img src="https://img.shields.io/docker/stars/zetohkr/nginx-full.svg?style=for-the-badge">
   </a>
-  <a href="https://hub.docker.com/repository/docker/nginxproxymanager/nginx-full">
-    <img src="https://img.shields.io/docker/pulls/nginxproxymanager/nginx-full.svg?style=for-the-badge">
+  <a href="https://hub.docker.com/repository/docker/zetohkr/nginx-full">
+    <img src="https://img.shields.io/docker/pulls/zetohkr/nginx-full.svg?style=for-the-badge">
   </a>
 </p>
 
@@ -41,7 +41,7 @@ The following architectures are supported for all images:
 ### Usage:
 
 ```
-FROM nginxproxymanager/nginx-full:latest
+FROM zetohkr/nginx-full:latest
 
 ...
 ```
@@ -51,7 +51,7 @@ FROM nginxproxymanager/nginx-full:latest
 ```
 docker run \
   -v /path/to/local/acme-data:/data/.acme.sh \
-  nginxproxymanager/nginx-full:acmesh \
+  zetohkr/nginx-full:acmesh \
   acme.sh -h
 ```
 

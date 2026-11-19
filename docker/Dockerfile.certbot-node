@@ -24,4 +24,4 @@ COPY ./docker/files/test.js /tmp/test.js
 RUN node /tmp/test.js \
 	&& rm -f /tmp/test.js
 
-LABEL org.label-schema.cmd="docker run --rm -ti nginxproxymanager/nginx-full:certbot-node"
+LABEL org.label-schema.cmd="docker run --rm -ti zetohkr/nginx-full:certbot-node"

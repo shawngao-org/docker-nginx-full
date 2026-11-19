@@ -34,4 +34,4 @@ COPY ./docker/files/.bashrc.acmesh-golang /root/.bashrc
 COPY ./docker/scripts/install-gotools.sh /tmp/install-gotools.sh
 RUN /tmp/install-gotools.sh
 
-LABEL org.label-schema.cmd="docker run --rm -ti nginxproxymanager/nginx-full:acmesh-golang"
+LABEL org.label-schema.cmd="docker run --rm -ti zetohkr/nginx-full:acmesh-golang"
